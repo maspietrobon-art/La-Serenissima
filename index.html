@@ -215,8 +215,9 @@
   #chronList .yr{font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:12px; color:var(--dogado);
     display:block; margin-bottom:2px;}
   header{grid-area:header; background:linear-gradient(180deg,#2a1c14,#1c130d); color:var(--parchment);
-    padding:14px 24px 12px; border-bottom:3px solid var(--gold); display:flex; align-items:baseline; gap:16px; flex-wrap:wrap;
+    padding:10px 16px 12px 24px; border-bottom:3px solid var(--gold); display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap;
     min-width:0;}
+  #langToggleBtn{margin-left:auto; flex-shrink:0; margin-top:0;}
   header h1{font-family:'Cormorant Garamond',serif; font-weight:700; font-size:24px; margin:0; color:#f2e6c4; min-width:0;}
   header .sub{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:1.3px; text-transform:uppercase; color:#c7a862; opacity:.9;
     min-width:0; word-break:break-word; margin-top:4px;}
@@ -618,12 +619,12 @@
 <body>
 <div id="app">
   <header>
-    <button id="langToggleBtn" title="Switch language / Cambia lingua" style="position:absolute; top:10px; right:10px; z-index:50; font-size:12px; padding:4px 10px; border-radius:4px; border:1px solid var(--line); background:#fff; cursor:pointer; font-weight:700;">EN</button>
     <h1 id="mainTitle">La Serenissima — Catalogo territoriale completo</h1>
     <details id="subDetails">
       <summary id="subDetailsSummary">1170 territori · 697–1797</summary>
       <div class="sub" id="subDetailsSub">fonte: catalogo utente + integrazioni manuali · © Massimo Pietrobon</div>
     </details>
+    <button id="langToggleBtn" title="Switch language / Cambia lingua" style="font-size:12px; padding:4px 10px; border-radius:4px; border:1px solid var(--line); background:#fff; cursor:pointer; font-weight:700;">EN</button>
   </header>
 
   <aside>
@@ -643,10 +644,8 @@
     <label class="cat-row"><input type="checkbox" id="allTimeToggle" checked><span class="swatch" style="background:#b8963a;border-radius:3px;"></span><b id="lbl-allTime-b">Mostra tutte le epoche</b> <span id="lbl-allTime-rest">(ignora l'anno)</span></label>
     <label class="cat-row"><input type="checkbox" id="clusterToggle"><span class="swatch" style="background:#666;border-radius:3px;"></span><span id="lbl-cluster">Raggruppa punti vicini (cluster)</span></label>
     <label class="cat-row" id="sanMarcoToggleRow"><input type="checkbox" id="sanMarcoToggle"><span class="swatch" style="background:var(--sanmarco);border-radius:3px;"></span><span id="lbl-sanMarco">Includi la Repubblica di San Marco (1848-49)</span></label>
-    <div id="txt-sanMarcoNote" style="font-size:11px; color:var(--ink-soft); margin:2px 0 4px; line-height:1.4;">
-      Breve resurrezione risorgimentale (1848-49) guidata da Daniele Manin, che riprende il nome della
-      Serenissima senza esserne una vera continuazione istituzionale. I suoi eventi sono in oro, sempre
-      distinguibili dalla Repubblica storica (697-1797).
+    <div id="txt-sanMarcoNote" style="font-size:11px; color:var(--ink-soft); margin:2px 0 4px; line-height:1.3;">
+      Breve resurrezione risorgimentale (1848-49), non una vera continuazione della Repubblica storica. Eventi in oro.
     </div>
 
     <h2 id="h2-battlesMap">Battaglie sulla mappa</h2>
@@ -742,14 +741,14 @@
 <div id="supportModal" class="modal-overlay">
   <div class="modal-box">
     <button id="supportCloseBtn" class="modal-close">✕</button>
-    <h2>Sostieni il progetto</h2>
-    <p class="modal-intro">Questa mappa nasce da centinaia di ore di ricerca storica indipendente. Se ti è
+    <h2 id="h2-supportModal">Sostieni il progetto</h2>
+    <p class="modal-intro" id="txt-supportIntro">Questa mappa nasce da centinaia di ore di ricerca storica indipendente. Se ti è
       piaciuta e vuoi aiutarci a continuare a migliorarla e ad ampliarla, ogni contributo è benvenuto e
       apprezzato.</p>
     <div class="support-line"><b>PayPal</b><span>mas.pietrobon@gmail.com</span></div>
-    <div class="support-line"><b>Revolut</b><span>Puoi inviarmi pagamenti su Revolut tramite questo link: <a href="https://revolut.me/massimxz2d" target="_blank" rel="noopener">revolut.me/massimxz2d</a></span></div>
+    <div class="support-line"><b>Revolut</b><span id="txt-revolutLine">Puoi inviarmi pagamenti su Revolut tramite questo link: <a href="https://revolut.me/massimxz2d" target="_blank" rel="noopener">revolut.me/massimxz2d</a></span></div>
     <div class="support-line"><b>Bizum</b><span>+34 626 651 196</span></div>
-    <div class="support-line"><b>Bonifico (IBAN Revolut)</b><span>
+    <div class="support-line"><b id="lbl-bankTransfer">Bonifico (IBAN Revolut)</b><span id="txt-bankLine">
       Beneficiario: Massimo Pietrobon<br>
       IBAN: ES65 1583 0001 1290 3165 0674<br>
       BIC/SWIFT: REVOESM2<br>
@@ -761,21 +760,21 @@
 <div id="feedbackModal" class="modal-overlay">
   <div class="modal-box">
     <button id="feedbackCloseBtn" class="modal-close">✕</button>
-    <h2>Commenti e nuove scoperte</h2>
-    <p class="modal-intro">Questo spazio è dedicato a commenti costruttivi e alla segnalazione di nuove scoperte
+    <h2 id="h2-feedbackModal">Commenti e nuove scoperte</h2>
+    <p class="modal-intro" id="txt-feedbackIntro">Questo spazio è dedicato a commenti costruttivi e alla segnalazione di nuove scoperte
       o informazioni, al fine di migliorare la completezza e l'accuratezza storica del progetto. Il messaggio
       verrà inviato direttamente all'autore.</p>
     <form id="feedbackForm">
       <div class="feedback-field">
-        <label for="feedbackName">Nome (facoltativo)</label>
+        <label for="feedbackName" id="lbl-feedbackName">Nome (facoltativo)</label>
         <input type="text" id="feedbackName" name="name" autocomplete="name">
       </div>
       <div class="feedback-field">
-        <label for="feedbackEmail">La tua email, se desideri una risposta (facoltativo)</label>
+        <label for="feedbackEmail" id="lbl-feedbackEmail">La tua email, se desideri una risposta (facoltativo)</label>
         <input type="email" id="feedbackEmail" name="email" autocomplete="email">
       </div>
       <div class="feedback-field">
-        <label for="feedbackMessage">Messaggio</label>
+        <label for="feedbackMessage" id="lbl-feedbackMessage">Messaggio</label>
         <textarea id="feedbackMessage" name="message" required placeholder="Scrivi qui il tuo commento, correzione o nuova scoperta storica..."></textarea>
       </div>
       <button type="submit" id="feedbackSendBtn">Invia</button>
@@ -1019,6 +1018,10 @@ let audioCtx = null;
 const soundToggle_ref = {el: null};
 
 const DATA = JSON.parse(document.getElementById('dataBlob').textContent);
+/* il sottotitolo mostra sempre il conteggio reale delle voci del catalogo,
+   così non diventa mai obsoleto quando se ne aggiungono di nuove */
+document.getElementById('subDetailsSummary').textContent =
+  `${DATA.length} territori · 697–1797`;
 
 // popola select regioni
 const regions = [...new Set(DATA.map(d=>d.region))];
@@ -2758,6 +2761,180 @@ if(sanMarcoToggle){
 
 // posizione iniziale coerente delle fasce narrative eventualmente già aperte al caricamento
 requestAnimationFrame(resetChronScrollPositions);
+
+/* ===================== Selettore lingua IT / EN =====================
+   Traduce l'interfaccia statica (menu, filtri, pulsanti, intestazioni dei
+   pannelli). Le note esplicative lunghe e i contenuti storici (nomi delle
+   voci, popup, elenchi di dogi/guerre/battaglie) restano in italiano per
+   ora: sono previsti in una fase successiva del progetto. */
+let currentLang = 'it';
+
+const I18N_TEXT = {
+  mainTitle: {it:"La Serenissima — Catalogo territoriale completo", en:"La Serenissima — Complete Territorial Catalogue"},
+  'subDetailsSub': {it:"fonte: catalogo utente + integrazioni manuali · © Massimo Pietrobon", en:"source: user catalogue + manual additions · © Massimo Pietrobon"},
+  'txt-sanMarcoNote': {it:"Breve resurrezione risorgimentale (1848-49), non una vera continuazione della Repubblica storica. Eventi in oro.",
+    en:"A brief 1848-49 revival during the Risorgimento, not a true continuation of the historical Republic. Its events are shown in gold."},
+  'lbl-crossSearchBtn': {it:"Ricerca incrociata", en:"Cross-search"},
+  'lbl-stat-label': {it:"territori attivi:", en:"active territories:"},
+  'h2-search': {it:"Cerca un territorio", en:"Search a territory"},
+  'h2-viz': {it:"Visualizzazione", en:"Display"},
+  'lbl-allTime-b': {it:"Mostra tutte le epoche", en:"Show all eras"},
+  'lbl-allTime-rest': {it:"(ignora l'anno)", en:"(ignores the year)"},
+  'lbl-cluster': {it:"Raggruppa punti vicini (cluster)", en:"Cluster nearby points"},
+  'lbl-sanMarco': {it:"Includi la Repubblica di San Marco (1848-49)", en:"Include the Republic of San Marco (1848-49)"},
+  'h2-battlesMap': {it:"Battaglie sulla mappa", en:"Battles on the map"},
+  'lbl-battlesWon': {it:"Battaglie vinte", en:"Battles won"},
+  'lbl-battlesUncertain': {it:"Battaglie dall'esito incerto", en:"Battles with uncertain outcome"},
+  'lbl-battlesLost': {it:"Battaglie perse", en:"Battles lost"},
+  'lbl-siegeImposed': {it:"Assedi imposti da Venezia", en:"Sieges imposed by Venice"},
+  'lbl-siegeSuffered': {it:"Assedi subiti da Venezia", en:"Sieges suffered by Venice"},
+  'lbl-revolts': {it:"Rivolte", en:"Revolts"},
+  'lbl-dedications': {it:"Dedizioni spontanee", en:"Spontaneous submissions"},
+  'h2-narrative': {it:"Fasce narrative sincronizzate", en:"Synchronised narrative strips"},
+  'lbl-chron': {it:"Cronologia generale", en:"General chronology"},
+  'lbl-dogi': {it:"Sequenza dei Dogi", en:"Sequence of the Doges"},
+  'lbl-people': {it:"Personaggi Illustri", en:"Notable figures"},
+  'lbl-wars': {it:"Guerre della Repubblica", en:"Wars of the Republic"},
+  'lbl-battlesChron': {it:"Battaglie e assedi (elenco)", en:"Battles and sieges (list)"},
+  'h2-categories': {it:"Categorie", en:"Categories"},
+  'lbl-dogado': {it:"Dogado", en:"Dogado"},
+  'lbl-terraferma': {it:"Stato da Tera", en:"Stato da Tera (Mainland Dominion)"},
+  'lbl-mare': {it:"Stato da Mar", en:"Stato da Mar (Maritime Dominion)"},
+  'h2-routes': {it:"Rotte commerciali", en:"Trade routes"},
+  'lbl-fondaco': {it:"Fondachi / destinazioni commerciali", en:"Trading posts / commercial destinations"},
+  'lbl-mude': {it:"Mude di Stato (clicca una rotta per il nome)", en:"State galley convoys (click a route for its name)"},
+  'lbl-privateRoutes': {it:"Altre rotte marittime (commercio non statale)", en:"Other sea routes (private trade)"},
+  'lbl-landRoutes': {it:"Rotte terrestri (via Alemagna)", en:"Land routes (via Alemagna)"},
+  'lbl-silkRoad': {it:"Via della Seta (1260ca–1360ca)", en:"Silk Road (c.1260–c.1360)"},
+  'h2-regionFilter': {it:"Filtra per regione", en:"Filter by region"},
+  'opt-allRegions': {it:"— tutte le regioni —", en:"— all regions —"},
+  'h2-yearBalance': {it:"Bilancio dell'anno", en:"Balance of the year"},
+  'lbl-statTotal': {it:"Totale visibili", en:"Total visible"},
+  'lbl-statOld': {it:"Acquisiti prima del 1300", en:"Acquired before 1300"},
+  'lbl-statPerm': {it:"Mai perduti (fino al 1797)", en:"Never lost (until 1797)"},
+  'h2-methodNote': {it:"Nota metodologica", en:"Methodological note"},
+  'lbl-support': {it:"Sostieni il progetto", en:"Support the project"},
+  'lbl-feedback': {it:"Commenti e nuove scoperte", en:"Feedback and new findings"},
+  'lbl-allRightsReserved': {it:"Tutti i diritti riservati.", en:"All rights reserved."},
+  'lbl-fullscreen': {it:"Schermo intero", en:"Fullscreen"},
+  'lbl-export': {it:"Esporta immagine", en:"Export image"},
+  'lbl-sound': {it:"Suono", en:"Sound"},
+  'lbl-legend': {it:"Legenda", en:"Legend"},
+  'lbl-gained1': {it:"Acquisito", en:"Gained"},
+  'lbl-lost1': {it:"Perduto", en:"Lost"},
+  'lbl-temp': {it:"Riconquistato e riperso", en:"Regained and lost again"},
+  'lbl-const1': {it:"Costante", en:"Constant"},
+  'lbl-viewImage': {it:"Vedi come immagine", en:"View as image"},
+  'lbl-exitCross': {it:"Torna alla mappa normale", en:"Return to normal map"},
+  'h2-chronPanel': {it:"Cronologia sincronizzata", en:"Synchronised chronology"},
+  'h2-dogiPanel': {it:"Sequenza dei Dogi", en:"Sequence of the Doges"},
+  'h2-peoplePanel': {it:"Personaggi Illustri della Serenissima", en:"Notable Figures of the Serenissima"},
+  'h2-warsPanel': {it:"Guerre della Repubblica", en:"Wars of the Republic"},
+  'lbl-won1': {it:"Vinta", en:"Won"},
+  'lbl-lost2': {it:"Persa", en:"Lost"},
+  'lbl-uncertain1': {it:"Esito incerto", en:"Uncertain outcome"},
+  'h2-battlesChronPanel': {it:"Battaglie e assedi", en:"Battles and sieges"},
+  'lbl-won2': {it:"Vinta", en:"Won"},
+  'lbl-lost3': {it:"Persa", en:"Lost"},
+  'lbl-uncertain2': {it:"Esito incerto", en:"Uncertain outcome"},
+  'h2-crossModal': {it:"Ricerca incrociata", en:"Cross-search"},
+  'txt-crossIntro': {it:"Seleziona un doge, una guerra, una battaglia/assedio, oppure confronta due anni a scelta: la mappa mostrerà in verde i territori acquisiti nel periodo, in rosso quelli persi, a piena opacità quelli posseduti per l'intera durata. Il risultato include un riepilogo cronologico ed è scaricabile come immagine.",
+    en:"Select a doge, a war, a battle/siege, or compare any two years: the map will show in green the territories gained in the period, in red those lost, at full opacity those held throughout. The result includes a chronological summary and can be downloaded as an image."},
+  'lbl-crossDoge': {it:"Per Doge", en:"By Doge"},
+  'opt-noDoge': {it:"— nessuno —", en:"— none —"},
+  'lbl-crossWar': {it:"Per Guerra", en:"By War"},
+  'opt-noWar': {it:"— nessuna —", en:"— none —"},
+  'lbl-crossBattle': {it:"Per Battaglia/assedio", en:"By Battle/siege"},
+  'opt-noBattle': {it:"— nessuna —", en:"— none —"},
+  'lbl-compareYears': {it:"Oppure confronta due anni a scelta", en:"Or compare any two chosen years"},
+  'lbl-gained2': {it:"Acquisito nel periodo", en:"Gained in the period"},
+  'lbl-lost4': {it:"Perduto nel periodo", en:"Lost in the period"},
+  'lbl-const2': {it:"Posseduto per l'intera durata", en:"Held throughout"},
+  'lbl-crossGenerate': {it:"Genera mappa incrociata", en:"Generate cross-search map"},
+  'h2-supportModal': {it:"Sostieni il progetto", en:"Support the project"},
+  'txt-supportIntro': {it:"Questa mappa nasce da centinaia di ore di ricerca storica indipendente. Se ti è piaciuta e vuoi aiutarci a continuare a migliorarla e ad ampliarla, ogni contributo è benvenuto e apprezzato.",
+    en:"This map is the result of hundreds of hours of independent historical research. If you enjoyed it and would like to help us keep improving and expanding it, any contribution is welcome and appreciated."},
+  'lbl-bankTransfer': {it:"Bonifico (IBAN Revolut)", en:"Bank transfer (Revolut IBAN)"},
+  'h2-feedbackModal': {it:"Commenti e nuove scoperte", en:"Feedback and new findings"},
+  'txt-feedbackIntro': {it:"Questo spazio è dedicato a commenti costruttivi e alla segnalazione di nuove scoperte o informazioni, al fine di migliorare la completezza e l'accuratezza storica del progetto. Il messaggio verrà inviato direttamente all'autore.",
+    en:"This space is for constructive comments and for reporting new findings or information, to help improve the completeness and historical accuracy of the project. Your message will be sent directly to the author."},
+  'lbl-feedbackName': {it:"Nome (facoltativo)", en:"Name (optional)"},
+  'lbl-feedbackEmail': {it:"La tua email, se desideri una risposta (facoltativo)", en:"Your email, if you'd like a reply (optional)"},
+  'lbl-feedbackMessage': {it:"Messaggio", en:"Message"},
+  'feedbackSendBtn': {it:"Invia", en:"Send"},
+};
+
+const I18N_PLACEHOLDER = {
+  search: {it:"es. Zara, Candia, Bergamo…", en:"e.g. Zara, Candia, Bergamo…"},
+  chronSearch: {it:"Cerca un evento…", en:"Search an event…"},
+  dogiSearch: {it:"Cerca un doge…", en:"Search a doge…"},
+  peopleSearch: {it:"Cerca un personaggio…", en:"Search a figure…"},
+  warsSearch: {it:"Cerca una guerra…", en:"Search a war…"},
+  battlesChronSearch: {it:"Cerca una battaglia/assedio…", en:"Search a battle/siege…"},
+  crossYearA: {it:"Anno A", en:"Year A"},
+  crossYearB: {it:"Anno B", en:"Year B"},
+};
+
+const I18N_TITLE = {
+  langToggleBtn: {it:"Switch language / Cambia lingua", en:"Switch language / Cambia lingua"},
+  crossSearchBtn: {it:"Genera una mappa con dati incrociati (doge, guerra o battaglia)", en:"Generate a map with cross-referenced data (doge, war or battle)"},
+  exportBtn: {it:"Scarica lo stato attuale della mappa come immagine", en:"Download the current map state as an image"},
+  soundToggleBtn: {it:"Attiva/disattiva il suono per battaglie, assedi, dedizioni e rivolte", en:"Toggle sound for battles, sieges, submissions and revolts"},
+  legendToggleBtn: {it:"Mostra/nascondi la legenda dei simboli", en:"Show/hide the symbol legend"},
+  yearInput: {it:"Vai a un anno preciso (premi Invio)", en:"Go to a specific year (press Enter)"},
+  speedSelect: {it:"Velocità di avanzamento", en:"Playback speed"},
+  nudgeBack10: {it:"Indietro di 10 anni", en:"Back 10 years"},
+  nudgeBack1: {it:"Indietro di 1 anno", en:"Back 1 year"},
+  nudgeFwd1: {it:"Avanti di 1 anno", en:"Forward 1 year"},
+  nudgeFwd10: {it:"Avanti di 10 anni", en:"Forward 10 years"},
+};
+
+/* voci che contengono markup HTML (link, <br>) e vanno impostate con
+   innerHTML invece che textContent, altrimenti l'HTML verrebbe mostrato
+   come testo letterale */
+const I18N_HTML = {
+  'txt-revolutLine': {it:'Puoi inviarmi pagamenti su Revolut tramite questo link: <a href="https://revolut.me/massimxz2d" target="_blank" rel="noopener">revolut.me/massimxz2d</a>',
+    en:'You can send me payments on Revolut via this link: <a href="https://revolut.me/massimxz2d" target="_blank" rel="noopener">revolut.me/massimxz2d</a>'},
+  'txt-bankLine': {it:'Beneficiario: Massimo Pietrobon<br>IBAN: ES65 1583 0001 1290 3165 0674<br>BIC/SWIFT: REVOESM2<br>Revolut Bank UAB, Calle Príncipe de Vergara 132, 4ª planta, 28002 Madrid, Spagna',
+    en:'Beneficiary: Massimo Pietrobon<br>IBAN: ES65 1583 0001 1290 3165 0674<br>BIC/SWIFT: REVOESM2<br>Revolut Bank UAB, Calle Príncipe de Vergara 132, 4th floor, 28002 Madrid, Spain'},
+};
+
+function setLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  Object.entries(I18N_TEXT).forEach(([id, pair])=>{
+    const el = document.getElementById(id);
+    if(el) el.textContent = pair[lang];
+  });
+  const summaryEl = document.getElementById('subDetailsSummary');
+  if(summaryEl){
+    summaryEl.textContent = lang === 'it'
+      ? `${DATA.length} territori · 697–1797`
+      : `${DATA.length} territories · 697–1797`;
+  }
+  Object.entries(I18N_PLACEHOLDER).forEach(([id, pair])=>{
+    const el = document.getElementById(id);
+    if(el) el.setAttribute('placeholder', pair[lang]);
+  });
+  Object.entries(I18N_TITLE).forEach(([id, pair])=>{
+    const el = document.getElementById(id);
+    if(el) el.setAttribute('title', pair[lang]);
+  });
+  Object.entries(I18N_HTML).forEach(([id, pair])=>{
+    const el = document.getElementById(id);
+    if(el) el.innerHTML = pair[lang];
+  });
+  const btn = document.getElementById('langToggleBtn');
+  if(btn) btn.textContent = lang === 'it' ? 'EN' : 'IT';
+}
+
+const langToggleBtn = document.getElementById('langToggleBtn');
+if(langToggleBtn){
+  langToggleBtn.addEventListener('click', ()=>{
+    setLang(currentLang === 'it' ? 'en' : 'it');
+  });
+}
+
 
 </script>
 </body>
