@@ -5,18 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>La Serenissima — Catalogo territoriale completo 697–1797</title>
 
-<!-- Google Analytics (GA4): non incide sulla visualizzazione, gira in background.
-     SOSTITUIRE "G-XXXXXXXXXX" con l'ID di misurazione reale, ottenibile
-     gratuitamente creando una proprietà su https://analytics.google.com
-     (Amministrazione > Crea proprietà > si trova sotto "Flussi di dati" >
-     scegliere il flusso web > l'ID inizia sempre con "G-"). Finché resta
-     il placeholder qui sotto, lo script è inerte e non traccia nulla. -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google Analytics (GA4): non incide sulla visualizzazione, gira in background. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G10PSB5TL9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+  gtag('config', 'G-G10PSB5TL9');
+  gtag('config', 'GT-NBB2JVXH');
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
@@ -647,15 +643,10 @@
     <label class="cat-row"><input type="checkbox" id="allTimeToggle" checked><span class="swatch" style="background:#b8963a;border-radius:3px;"></span><b id="lbl-allTime-b">Mostra tutte le epoche</b> <span id="lbl-allTime-rest">(ignora l'anno)</span></label>
     <label class="cat-row"><input type="checkbox" id="clusterToggle"><span class="swatch" style="background:#666;border-radius:3px;"></span><span id="lbl-cluster">Raggruppa punti vicini (cluster)</span></label>
     <label class="cat-row" id="sanMarcoToggleRow"><input type="checkbox" id="sanMarcoToggle"><span class="swatch" style="background:var(--sanmarco);border-radius:3px;"></span><span id="lbl-sanMarco">Includi la Repubblica di San Marco (1848-49)</span></label>
-    <div id="txt-sanMarcoNote" style="font-size:11.5px; color:var(--ink-soft); margin:2px 0 4px; line-height:1.4;">
-      Prova: estende la barra del tempo fino al 1849 per mostrare la breve
-      "resurrezione" ottocentesca guidata da Daniele Manin — un episodio del
-      Risorgimento che riprende consapevolmente il nome della Serenissima,
-      ma non ne è una vera continuazione istituzionale. I suoi eventi sono
-      contrassegnati in oro per restare sempre distinguibili dalla
-      vera Repubblica (697-1797). I territori (Venezia e le città che
-      aderirono) e le battaglie/assedi del 1848-49 compaiono e scompaiono
-      anno per anno esattamente come quelli della Serenissima.
+    <div id="txt-sanMarcoNote" style="font-size:11px; color:var(--ink-soft); margin:2px 0 4px; line-height:1.4;">
+      Breve resurrezione risorgimentale (1848-49) guidata da Daniele Manin, che riprende il nome della
+      Serenissima senza esserne una vera continuazione istituzionale. I suoi eventi sono in oro, sempre
+      distinguibili dalla Repubblica storica (697-1797).
     </div>
 
     <h2 id="h2-battlesMap">Battaglie sulla mappa</h2>
@@ -666,7 +657,7 @@
     <label class="cat-row"><input type="checkbox" id="battlesSiegeSufferedToggle"><span class="swatch" style="background:radial-gradient(circle,#ffd66e,#ff9628 70%);border-radius:50%;border:1.5px dashed #8f1626;"></span><span id="lbl-siegeSuffered">Assedi subiti da Venezia</span></label>
     <label class="cat-row"><input type="checkbox" id="battlesRevoltToggle"><span class="swatch" style="background:radial-gradient(circle,#e0c8f0,#9b5fc0 70%);border-radius:50%;"></span><span id="lbl-revolts">Rivolte</span></label>
     <label class="cat-row"><input type="checkbox" id="battlesDedicationToggle"><span class="swatch" style="background:radial-gradient(circle,#d8f0d0,#5a9b5f 70%);border-radius:50%;"></span><span id="lbl-dedications">Dedizioni spontanee</span></label>
-    <div id="txt-battlesNote" style="font-size:11.5px; color:var(--ink-soft); margin:2px 0 4px; line-height:1.4;">
+    <div id="txt-battlesNote" style="display:none;">
       Con "tutte le epoche" attivo vedi l'intero catalogo, comprese Creta, Cipro, Egeo, Trentino, Romagna e Puglia
       — territori posseduti solo temporaneamente e già persi entro il 1797. Disattivalo per usare la timeline
       e vedere lo stato esatto anno per anno.
@@ -690,7 +681,7 @@
     <label class="cat-row"><input type="checkbox" id="privateRoutesToggle"><span class="swatch" style="background:repeating-linear-gradient(90deg,#1a3a6b 0 3px,transparent 3px 6px);border-radius:0;"></span><span id="lbl-privateRoutes">Altre rotte marittime (commercio non statale)</span></label>
     <label class="cat-row"><input type="checkbox" id="landRoutesToggle"><span class="swatch" style="background:repeating-linear-gradient(90deg,#6b4226 0 5px,transparent 5px 9px);border-radius:0;"></span><span id="lbl-landRoutes">Rotte terrestri (via Alemagna)</span></label>
     <label class="cat-row"><input type="checkbox" id="silkRoadToggle"><span class="swatch" style="background:repeating-linear-gradient(90deg,#7a2d8f 0 5px,transparent 5px 9px);border-radius:0;"></span><span id="lbl-silkRoad">Via della Seta (1260ca–1360ca)</span></label>
-    <div id="txt-routesNote" style="font-size:11px; color:var(--ink-soft); margin:2px 0 8px; line-height:1.4;">
+    <div id="txt-routesNote" style="display:none;">
       Ogni muda ha ora il proprio periodo storico reale (es. Aigues-Mortes dal 1412, Trafego dal 1460) e
       compare solo negli anni in cui era attiva; con "tutte le epoche" attivo si vedono invece sempre.
       Clicca su una rotta per vederne il nome e il periodo esatto.
@@ -706,8 +697,8 @@
     <div class="statline"><span id="lbl-statOld">Acquisiti prima del 1300</span><b id="stat-old">–</b></div>
     <div class="statline"><span id="lbl-statPerm">Mai perduti (fino al 1797)</span><b id="stat-perm">–</b></div>
 
-    <h2 id="h2-methodNote">Nota metodologica</h2>
-    <div id="txt-methodNote" style="font-size:12px; line-height:1.5; color:var(--ink-soft);">
+    <h2 id="h2-methodNote" style="display:none;">Nota metodologica</h2>
+    <div id="txt-methodNote" style="display:none;">
       Dati estratti dal catalogo fornito dall'utente (526 voci originali + integrazioni dal PDF/verifiche storiche). Le coordinate sono state ricostruite manualmente
       per ciascuna località; alcune date complesse (possessi multipli, secoli approssimati "XIII sec.") sono state
       semplificate a un singolo intervallo entrata–uscita a fini di visualizzazione.
@@ -1116,6 +1107,12 @@ document.addEventListener('keydown', (ev)=>{
     fsBtn.click();
   }
 });
+// Tasto "Esc" per chiudere anche il popup informativo di una località,
+// se aperto (oltre al click sulla × o fuori dal popup, già gestiti da
+// Leaflet di default).
+document.addEventListener('keydown', (ev)=>{
+  if(ev.key === 'Escape') map.closePopup();
+});
 // se l'utente esce dallo schermo intero del BROWSER (es. tasto indietro del
 // telefono) senza passare dal nostro pulsante, sincronizza comunque il
 // nostro layout normale
@@ -1334,6 +1331,12 @@ function render(){
   }
   const {year, cats, region, allTime} = currentFilters();
   updateBattles(year, allTime);
+  /* Se un marker ha un popup aperto (l'utente ha cliccato su una località),
+     lo ricordiamo prima di svuotare il layer: clearLayers() rimuove tutti i
+     marker dalla mappa, il che chiuderebbe automaticamente il popup anche
+     durante la sola riproduzione della timeline. Lo riapriremo alla fine,
+     sullo stesso marker, se il territorio è ancora visibile in questo anno. */
+  const reopenTarget = markerObjs.find(o => o.m.isPopupOpen());
   activeLayer.clearLayers();
   let visible = [], oldCount=0, permCount=0;
   const catCounts = {dogado:0,terraferma:0,mare:0,fondaco:0};
@@ -1375,6 +1378,14 @@ function render(){
       if(d.lost===null) permCount++;
     }
   });
+  /* riapre il popup che era aperto prima di questo render, ma solo se il
+     suo territorio è ancora visibile nell'anno corrente: se l'utente ha
+     appena "perso di vista" quella località (es. territorio non ancora
+     acquisito o già perduto in questo punto della timeline) il popup resta
+     chiuso, com'è corretto che sia. */
+  if(reopenTarget && visible.includes(reopenTarget.d)){
+    reopenTarget.m.openPopup();
+  }
   document.getElementById('stat-year').textContent = allTime? 'Tutte' : year;
   document.getElementById('stat-count').textContent = visible.length;
   document.getElementById('stat-total').textContent = visible.length;
