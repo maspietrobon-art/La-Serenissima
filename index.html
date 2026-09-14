@@ -1018,6 +1018,9 @@ let audioCtx = null;
 const soundToggle_ref = {el: null};
 
 const DATA = JSON.parse(document.getElementById('dataBlob').textContent);
+/* dichiarata qui, molto prima del primo render(), per evitare un errore di
+   riferimento: verrà effettivamente gestita più avanti dal selettore lingua */
+let currentLang = 'it';
 /* il sottotitolo mostra sempre il conteggio reale delle voci del catalogo,
    così non diventa mai obsoleto quando se ne aggiungono di nuove */
 document.getElementById('subDetailsSummary').textContent =
@@ -1144,7 +1147,7 @@ exportBtn.addEventListener('click', async ()=>{
   const oldLabel = exportBtn.textContent;
   exportBtn.textContent = '⏳ Generazione…';
   const {year, allTime} = currentFilters();
-  const yearLabel = allTime ? 'Tutte le epoche' : `Anno ${year}`;
+  const yearLabel = allTime ? (currentLang === 'it' ? 'Tutte le epoche' : 'All eras') : `${currentLang === 'it' ? 'Anno' : 'Year'} ${year}`;
   const optionsSummary = buildActiveOptionsSummary().join('\n');
   const result = await exportMapAsImage(yearLabel, allTime?'tutte-le-epoche':String(year), optionsSummary);
   if(result) downloadDataUrl(result.dataUrl, result.filename);
@@ -1389,7 +1392,7 @@ function render(){
   if(reopenTarget && visible.includes(reopenTarget.d)){
     reopenTarget.m.openPopup();
   }
-  document.getElementById('stat-year').textContent = allTime? 'Tutte' : year;
+  document.getElementById('stat-year').textContent = allTime? (currentLang === 'it' ? 'Tutte' : 'All') : year;
   document.getElementById('stat-count').textContent = visible.length;
   document.getElementById('stat-total').textContent = visible.length;
   document.getElementById('stat-old').textContent = oldCount;
@@ -2766,8 +2769,9 @@ requestAnimationFrame(resetChronScrollPositions);
    Traduce l'interfaccia statica (menu, filtri, pulsanti, intestazioni dei
    pannelli). Le note esplicative lunghe e i contenuti storici (nomi delle
    voci, popup, elenchi di dogi/guerre/battaglie) restano in italiano per
-   ora: sono previsti in una fase successiva del progetto. */
-let currentLang = 'it';
+   ora: sono previsti in una fase successiva del progetto.
+   (currentLang è già dichiarata in cima al file, subito dopo il caricamento
+   di DATA, per essere disponibile fin dal primo render() della mappa). */
 
 const I18N_TEXT = {
   mainTitle: {it:"La Serenissima — Catalogo territoriale completo", en:"La Serenissima — Complete Territorial Catalogue"},
