@@ -657,16 +657,19 @@
       Breve resurrezione risorgimentale (1848-49), non una vera continuazione della Repubblica storica. Eventi in oro.
     </div>
 
-    <h2 id="h2-battlesMap">Battaglie sulla mappa</h2>
-    <label class="cat-row"><input type="checkbox" id="battlesWonToggle"><span class="swatch" style="background:radial-gradient(circle,#fff1a8,#ffb032 45%,#c62828 78%);border-radius:50%;"></span><span id="lbl-battlesWon">Battaglie vinte</span></label>
-    <label class="cat-row"><input type="checkbox" id="battlesUncertainToggle"><span class="swatch" style="background:radial-gradient(circle,#fff1a8,#ffb032 45%,#c49619 78%);border-radius:50%;"></span><span id="lbl-battlesUncertain">Battaglie dall'esito incerto</span></label>
-    <label class="cat-row"><input type="checkbox" id="battlesLostToggle"><span class="swatch" style="background:radial-gradient(circle,#fff1a8,#ffb032 45%,#343a48 78%);border-radius:50%;"></span><span id="lbl-battlesLost">Battaglie perse</span></label>
-    <label class="cat-row"><input type="checkbox" id="battlesSiegeImposedToggle"><span class="swatch" style="background:radial-gradient(circle,#ffd66e,#ff9628 70%);border-radius:50%;border:1.5px solid #b8963a;"></span><span id="lbl-siegeImposed">Assedi imposti da Venezia</span></label>
-    <label class="cat-row"><input type="checkbox" id="battlesSiegeSufferedToggle"><span class="swatch" style="background:radial-gradient(circle,#ffd66e,#ff9628 70%);border-radius:50%;border:1.5px dashed #8f1626;"></span><span id="lbl-siegeSuffered">Assedi subiti da Venezia</span></label>
-    <label class="cat-row"><input type="checkbox" id="battlesRevoltToggle"><span class="swatch" style="background:radial-gradient(circle,#e0c8f0,#9b5fc0 70%);border-radius:50%;"></span><span id="lbl-revolts">Rivolte</span></label>
+    <h2 id="h2-battlesMap">Eventi sulla mappa</h2>
+    <label class="cat-row war-master"><input type="checkbox" id="battlesWarToggle"><span class="swatch" style="background:radial-gradient(circle,#fff1a8,#ffb032 45%,#c62828 78%);border-radius:50%;"></span><b id="lbl-war">Eventi bellici</b></label>
+    <div class="war-sub" id="warSub" style="margin-left:22px;">
+      <label class="cat-row war-sub-row"><input type="checkbox" id="battlesWonToggle"><span class="swatch" style="background:radial-gradient(circle,#fff1a8,#ffb032 45%,#c62828 78%);border-radius:50%;"></span><span id="lbl-battlesWon">Battaglie vinte</span></label>
+      <label class="cat-row war-sub-row"><input type="checkbox" id="battlesUncertainToggle"><span class="swatch" style="background:radial-gradient(circle,#fff1a8,#ffb032 45%,#c49619 78%);border-radius:50%;"></span><span id="lbl-battlesUncertain">Battaglie dall'esito incerto</span></label>
+      <label class="cat-row war-sub-row"><input type="checkbox" id="battlesLostToggle"><span class="swatch" style="background:radial-gradient(circle,#fff1a8,#ffb032 45%,#343a48 78%);border-radius:50%;"></span><span id="lbl-battlesLost">Battaglie perse</span></label>
+      <label class="cat-row war-sub-row"><input type="checkbox" id="battlesSiegeImposedToggle"><span class="swatch" style="background:radial-gradient(circle,#ffd66e,#ff9628 70%);border-radius:50%;border:1.5px solid #b8963a;"></span><span id="lbl-siegeImposed">Assedi imposti da Venezia</span></label>
+      <label class="cat-row war-sub-row"><input type="checkbox" id="battlesSiegeSufferedToggle"><span class="swatch" style="background:radial-gradient(circle,#ffd66e,#ff9628 70%);border-radius:50%;border:1.5px dashed #8f1626;"></span><span id="lbl-siegeSuffered">Assedi subiti da Venezia</span></label>
+      <label class="cat-row war-sub-row"><input type="checkbox" id="battlesRevoltToggle"><span class="swatch" style="background:radial-gradient(circle,#e0c8f0,#9b5fc0 70%);border-radius:50%;"></span><span id="lbl-revolts">Rivolte</span></label>
+    </div>
     <label class="cat-row"><input type="checkbox" id="battlesDedicationToggle"><span class="swatch" style="background:radial-gradient(circle,#d8f0d0,#5a9b5f 70%);border-radius:50%;"></span><span id="lbl-dedications">Dedizioni spontanee</span></label>
-    <label class="cat-row"><input type="checkbox" id="battlesEventToggle"><span class="swatch" style="background:#b8963a;border-radius:3px;"></span><span id="lbl-events">Altri eventi (opere, confini, incendi…)</span></label>
     <label class="cat-row"><input type="checkbox" id="battlesTreatyToggle"><span class="swatch" style="background:#2a9d8f;border-radius:3px;"></span><span id="lbl-treaties">Trattati, paci e alleanze</span></label>
+    <label class="cat-row"><input type="checkbox" id="battlesEventToggle"><span class="swatch" style="background:#b8963a;border-radius:3px;"></span><span id="lbl-events">Altri eventi (opere, confini, incendi…)</span></label>
     <div id="txt-battlesNote" style="display:none;">
       Con "tutte le epoche" attivo vedi l'intero catalogo, comprese Creta, Cipro, Egeo, Trentino, Romagna e Puglia
       — territori posseduti solo temporaneamente e già persi entro il 1797. Disattivalo per usare la timeline
@@ -1629,6 +1632,25 @@ const battlesDedicationToggle = document.getElementById('battlesDedicationToggle
 const battlesEventToggle = document.getElementById('battlesEventToggle');
 const battlesTreatyToggle = document.getElementById('battlesTreatyToggle');
 const battleToggles = [battlesWonToggle, battlesUncertainToggle, battlesLostToggle, battlesSiegeImposedToggle, battlesSiegeSufferedToggle, battlesRevoltToggle, battlesDedicationToggle, battlesEventToggle, battlesTreatyToggle];
+
+/* Gruppo "Eventi bellici": casella generale che accende/spegne in blocco
+   battaglie (vinte/perse/incerte), assedi (imposti/subiti) e rivolte; lo
+   stato della casella generale segue quello delle sotto-caselle
+   (spuntata = tutte, indeterminata = alcune). */
+const battlesWarToggle = document.getElementById('battlesWarToggle');
+const warSubToggles = [battlesWonToggle, battlesUncertainToggle, battlesLostToggle, battlesSiegeImposedToggle, battlesSiegeSufferedToggle, battlesRevoltToggle];
+function syncWarMaster(){
+  const n = warSubToggles.filter(t=>t.checked).length;
+  battlesWarToggle.checked = n === warSubToggles.length;
+  battlesWarToggle.indeterminate = n > 0 && n < warSubToggles.length;
+}
+battlesWarToggle.addEventListener('change', ()=>{
+  warSubToggles.forEach(t=>{ t.checked = battlesWarToggle.checked; });
+  battlesWarToggle.indeterminate = false;
+  lastBattleYear = null; render();
+});
+warSubToggles.forEach(t=> t.addEventListener('change', syncWarMaster));
+syncWarMaster();
 
 /* rotte commerciali principali della Serenissima (indicative, non ricostruite
    punto per punto sulle rotte reali seguite dalle galee, ma sui grandi
@@ -2876,7 +2898,8 @@ const I18N_TEXT = {
   'lbl-allTime-rest': {it:"(ignora l'anno)", en:"(ignores the year)"},
   'lbl-cluster': {it:"Raggruppa punti vicini (cluster)", en:"Cluster nearby points"},
   'lbl-sanMarco': {it:"Includi la Repubblica di San Marco (1848-49)", en:"Include the Republic of San Marco (1848-49)"},
-  'h2-battlesMap': {it:"Battaglie sulla mappa", en:"Battles on the map"},
+  'h2-battlesMap': {it:"Eventi sulla mappa", en:"Events on the map"},
+  'lbl-war': {it:"Eventi bellici", en:"Military events"},
   'lbl-battlesWon': {it:"Battaglie vinte", en:"Battles won"},
   'lbl-battlesUncertain': {it:"Battaglie dall'esito incerto", en:"Battles with uncertain outcome"},
   'lbl-battlesLost': {it:"Battaglie perse", en:"Battles lost"},
